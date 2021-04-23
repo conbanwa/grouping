@@ -1,3 +1,18 @@
+body {
+    color: #2f332a;
+    font: 15px/21px Arial, Helvetica, simsun, sans-serif;
+    background: #f0f6e4 \9;
+    background-image: url(medal.jpg);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
+.menu {
+    position: absolute;
+    left: 100px;
+    top: 10px
+}
+
 h1,
 h2,
 h3,
@@ -7,7 +22,6 @@ h6 {
     color: #2f332a;
     font-weight: bold;
     font-family: Helvetica, Arial, sans-serif;
-    padding-bottom: 5px;
 }
 
 h1 {
@@ -78,28 +92,15 @@ ul.list {
 }
 
 div.content_wrap {
+    margin: 30px;
     display: flex;
-    text-align: center!important;
+    text-align: center;
 }
 
-div.content_wrap div.left {
+div.content_wrap div {
     float: left;
     width: 340px;
-}
-
-div.content_wrap div.right {
-    float: right;
-    width: 340px;
-}
-
-div.content_wrap div.out {
-    float: left;
-    width: 340px;
-}
-
-div.content_wrap div.in {
-    float: left;
-    width: 340px;
+    margin: 30px;
 }
 
 div.zTreeDemoBackground {

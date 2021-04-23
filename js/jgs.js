@@ -120,5 +120,7 @@ function jsonstr(a) {
 function sortNumber(a, b) { return a - b }
 
 function strtimes(str, num) {
+    if(!num)return ""
+    if(num<1)return ""
     return num > 1 ? str += strtimes(str, --num) : str;
 }
