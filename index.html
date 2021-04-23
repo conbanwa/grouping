@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<HTML>
+
+<HEAD>
+    <TITLE> ZTREE DEMO - beforeDrag / onDrag / beforeDrop / onDrop</TITLE>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="./css/demo.css" type="text/css">
+    <link rel="stylesheet" href="./css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="./js/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.ztree.core.js"></script>
+    <script type="text/javascript" src="./js/jquery.ztree.excheck.js"></script>
+    <script type="text/javascript" src="./js/jquery.ztree.exedit.js"></script>
+    <script type="text/javascript" src="./js/storage.js"></script>
+    <script type="text/javascript" src="初始编组.js"></script>
+    <script type="text/javascript" src="初始成员.js"></script>
+    <script type="text/javascript" src="初始结构.js"></script>
+    <script type="text/javascript" src="./js/jgs.js"></script>
+    <script type="text/javascript" src="./js/common.js"></script>
+    <script type="text/javascript" src="./js/team.js"></script>
+    <script type="text/javascript" src="./js/member.js"></script>
+    <!-- <script type="text/javascript" src="./js/settings.js"></script> -->
+    <SCRIPT type="text/javascript">
+    </SCRIPT>
+</HEAD>
+
+<BODY>
+    <h1>作战安排</h1>
+    <h6>可以通过勾选和拖拽选择成员</h6>
+    <div class="content_wrap">
+        <div class="zTreeDemoBackground left">
+            <h3>作战编组</h3>
+            <ul id="treeDemo" class="ztree"></ul>
+        </div>
+        <div class="zTreeDemoBackground whole">
+            <h3>作战力量(可以拖拽到这里)</h3>
+            <ul id="treeDemo1" class="ztree"></ul>
+        </div>
+        <div class="zTreeDemoBackground right">
+            <h3>作战力量</h3>
+            <ul id="treeDemo2" class="ztree"></ul>
+        </div>
+    </div>
+    <div id="rMenu">
+        <ul>
+            <li id="m_add" onclick="addTreeNode();">增加节点</li>
+            <li id="m_del" onclick="removeTreeNode();">删除节点</li>
+            <!-- <li id="m_check" onclick="checkTreeNode(true);">Check节点</li>
+            <li id="m_unCheck" onclick="checkTreeNode(false);">unCheck节点</li> -->
+            <li id="m_reset" onclick="resetTree();">撤销</li>
+        </ul>
+    </div>
+    <button onclick="wx.clearStorage()">清除所有数据</button>
+    <style type="text/css">
+        div#rMenu {
+            position: absolute;
+            visibility: hidden;
+            top: 0;
+            background-color: #555;
+            text-align: left;
+            padding: 2px;
+        }
+        
+        div#rMenu ul li {
+            margin: 1px 0;
+            padding: 0 5px;
+            cursor: pointer;
+            list-style: none outside none;
+            background-color: #DFDFDF;
+        }
+    </style>
+</BODY>
+
+</HTML>
