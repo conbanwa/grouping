@@ -1,3 +1,22 @@
+rend()
+
+otree = $.fn.zTree.getZTreeObj("treeDemo1");
+itree = $.fn.zTree.getZTreeObj("treeDemo2");
+
+function rend() {
+    let id = ($("#selects").val());
+    app.set("current", id)
+    if (app.get(id) == null) {
+        app.set(id, {
+            out: allmember,
+            in: armyteam
+        })
+    }
+    console.log(app.get(id))
+    $.fn.zTree.init($("#treeDemo1"), setting, app.get(id).out);
+    $.fn.zTree.init($("#treeDemo2"), setting, app.get(id).in);
+}
+
 function outport() {
     let text = ""
     zTree.getNodes().forEach(e => nest(e, 0));

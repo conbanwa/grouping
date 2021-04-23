@@ -1,53 +1,55 @@
-var setting = {
-    edit: {
-        enable: true,
-        editNameSelectAll:true
-    },
-    view: {
-        dblClickExpand: false
-    },
-    data: {
-        simpleData: {
-            enable: true
-        }
-    },
-    callback: {
-        onClick: onClick,
-        onRightClick: OnRightClick,
-        beforeDrag: beforeDrag,
-        onDrag: saveteam,
-        onDrop: saveteam,
-        beforeAsync: saveteam,
-        beforeCheck: saveteam,
-        beforeClick: saveteam,
-        beforeCollapse: saveteam,
-        beforeDblClick: saveteam,
-        beforeEditName: saveteam,
-        beforeExpand: saveteam,
-        beforeRemove: saveteam,
-        beforeRename: saveteam,
-        onAsyncError: saveteam,
-        onAsyncSuccess: saveteam,
-        onCheck: saveteam,
-        onCollapse: saveteam,
-        onDblClick: saveteam,
-        onDragMove: saveteam,
-        onExpand: savemember,
-        onRemove: saveteam,
-        onRename: saveteam,
-    }
-};
+// var setting = {
+//     edit: {
+//         enable: true,
+//         editNameSelectAll: true
+//     },
+//     view: {
+//         dblClickExpand: false
+//     },
+//     data: {
+//         simpleData: {
+//             enable: true
+//         }
+//     },
+//     callback: {
+//         onClick: onClick,
+//         onRightClick: OnRightClick,
+//         beforeDrag: beforeDrag,
+//         onDrag: saveteam,
+//         onDrop: saveteam,
+//         beforeAsync: saveteam,
+//         beforeCheck: saveteam,
+//         beforeClick: saveteam,
+//         beforeCollapse: saveteam,
+//         beforeDblClick: saveteam,
+//         beforeEditName: saveteam,
+//         beforeExpand: saveteam,
+//         beforeRemove: saveteam,
+//         beforeRename: saveteam,
+//         onAsyncError: saveteam,
+//         onAsyncSuccess: saveteam,
+//         onCheck: saveteam,
+//         onCollapse: saveteam,
+//         onDblClick: saveteam,
+//         onDragMove: saveteam,
+//         onExpand: savemember,
+//         onRemove: saveteam,
+//         onRename: saveteam,
+//     }
+// };
 
 function beforeDrag(treeId, treeNodes) {
     saveteam()
     return false;
 }
+
 function onClick(event, treeId, treeNode, clickFlag) {
     z(treeNode.tId + " [ " + " onClick ]&nbsp;&nbsp;clickFlag = " + clickFlag + " (" + (clickFlag === 1 ? "普通选中" : (clickFlag === 0 ? "<b>取消选中</b>" : "<b>追加选中</b>")) + ")");
-    rend(treeNode.tId)
+    // rend(treeNode.tId)
 }
 
 function OnRightClick(event, treeId, treeNode) {
+    let zTree = $.fn.zTree.getZTreeObj(treeId);
     if (!treeNode && event.target.tagName.toLowerCase() != "button" && $(event.target).parents("a").length == 0) {
         zTree.cancelSelectedNode();
         showRMenu("root", event.clientX, event.clientY);

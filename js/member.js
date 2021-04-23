@@ -1,8 +1,6 @@
-var settingCheck = {
+var setting = {
     edit: {
         enable: true,
-        showRemoveBtn: false,
-        showRenameBtn: false
     },
     data: {
         simpleData: {
@@ -13,6 +11,7 @@ var settingCheck = {
         onDrag: beforeDragMember,
         onDrop: beforeDropMember,
         beforeDrop: beforeDrop,
+        onRightClick: OnRightClick,
         beforeAsync: savemember,
         beforeCheck: savemember,
         beforeClick: savemember,
@@ -39,10 +38,17 @@ var settingCheck = {
         onMouseUp: savemember,
         onRemove: savemember,
         onRename: savemember,
-        onRightClick: savemember
     }
 };
 
+
+function saveteam(event, treeId, treeNode) {
+    app.set("armyteam", zTree.getNodes())
+}
+
+function savemember(event, treeId, treeNode) {
+    app.set(app.get("current"), { out: otree.getNodes(), in: itree.getNodes() })
+}
 
 function beforeDrop(treeId, treeNodes) {
     if (treeId == 'treeDemo') {
