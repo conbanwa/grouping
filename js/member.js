@@ -1,19 +1,3 @@
-// var settingMember = {
-//     edit: {
-//         enable: true,
-//         showRemoveBtn: false,
-//         showRenameBtn: false
-//     },
-//     data: {
-//         simpleData: {
-//             enable: true
-//         }
-//     },
-//     callback: {
-//         beforeDrag: beforeDragMember,
-//         beforeDrop: beforeDropMember
-//     }
-// };
 var settingCheck = {
     edit: {
         enable: true,
@@ -56,10 +40,7 @@ var settingCheck = {
         onRemove: savemember,
         onRename: savemember,
         onRightClick: savemember
-    },
-    check: {
-        enable: true
-    },
+    }
 };
 
 
@@ -70,6 +51,7 @@ function beforeDrop(treeId, treeNodes) {
         return true
     }
 }
+
 function beforeDragMember(treeId, treeNodes) {
     for (var i = 0, l = treeNodes.length; i < l; i++) {
         if (treeNodes[i].drag === false) {
