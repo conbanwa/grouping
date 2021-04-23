@@ -23,8 +23,9 @@ function resetTree() {
 function rend(id) {
     app.set("current", id)
     if (app.get(id) == null) {
-        app.set(id, { in: allmember,
-            out: []
+        app.set(id, {
+            out: allmember,
+            in: []
         })
     }
     console.log(app.get(id))

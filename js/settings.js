@@ -1,6 +1,6 @@
 function outport() {
     let text = ""
-    zTree.getNodes().forEach(nest);
+    zTree.getNodes().forEach(e => nest(e, 0));
 
     // 下载文件方法
     var funDownload = function(content, filename) {
@@ -22,22 +22,35 @@ function outport() {
         alert('浏览器不支持');
     }
 
-    function nest(n) {
-        text += (n.name)
+    function nest(n, t, m) {
+        text += teamname(n.name, t)
         if (n.pId != null) {
             let members = app.get(n.tId)
             if (members && members.in) {
                 let l = members.in.length
                 if (l) {
                     for (i = 0; i < l; i++) {
-                        text += (members.in[i].name)
+                        text += teamname(members.in[i].name, t)
+                        let mc = members.in[i].children
+                        if (mc) {
+                            for (let i = 0, l = mc.length; i < l; i++)
+                                nest(mc[i], t + 1)
+                        }
                     }
                 }
             }
         }
         if (n.children) {
             for (let i = 0, l = n.children.length; i < l; i++)
-                nest(n.children[i])
+                nest(n.children[i], t + 1)
+        }
+    }
+
+    function teamname(name, t, m) {
+        if (m == null) {
+            return t + name + "\n"
+        } else {
+            return t + m + name + "\n"
         }
     }
 }
