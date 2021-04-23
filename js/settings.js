@@ -43,16 +43,16 @@ function outport() {
         }
         if (n.children) {
             for (let i = 0, l = n.children.length; i < l; i++)
-                nest(n.children[i], t, m + 1)
+                nest(n.children[i], t + 1, m + 1)
         }
     }
 
     function teamname(name, t, m) {
-        t -= 2
+        t -= 1
         if (m == null) {
-            return strtimes("  │      ", t) + "  ├──── " + name + "\n"
+            return strtimes("    │      ", t) + "    ├──── " + name + "\n"
         } else {
-            return strtimes("  │      ", t) + "  ├──── " + "成员" + name + "\n"
+            return strtimes("    │      ", t) + "    ├──── " + "成员" + name + "\n"
         }
     }
 }
