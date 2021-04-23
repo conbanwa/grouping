@@ -119,6 +119,6 @@ function jsonstr(a) {
 
 function sortNumber(a, b) { return a - b }
 
-function times(str, num) {
+function strtimes(str, num) {
     return num > 1 ? str += times(str, --num) : str;
 }
