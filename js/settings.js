@@ -23,6 +23,7 @@ function outport() {
     }
 
     function nest(n, t, m) {
+        t++
         text += teamname(n.name, t)
         if (n.pId != null) {
             let members = app.get(n.tId)
@@ -30,11 +31,11 @@ function outport() {
                 let l = members.in.length
                 if (l) {
                     for (i = 0; i < l; i++) {
-                        text += teamname(members.in[i].name, t + 1)
+                        text += teamname(members.in[i].name, t, 0)
                         let mc = members.in[i].children
                         if (mc) {
                             for (let i = 0, l = mc.length; i < l; i++)
-                                nest(mc[i], t + 1)
+                                nest(mc[i], t, (m == null) ? null : (m + 1))
                         }
                     }
                 }
@@ -42,15 +43,16 @@ function outport() {
         }
         if (n.children) {
             for (let i = 0, l = n.children.length; i < l; i++)
-                nest(n.children[i], t + 1)
+                nest(n.children[i], t, m + 1)
         }
     }
 
     function teamname(name, t, m) {
+        t -= 2
         if (m == null) {
-            return t + name + "\n"
+            return strtimes("  │      ", t) + "  ├──── " + name + "\n"
         } else {
-            return t + m + name + "\n"
+            return strtimes("  │      ", t) + "  ├──── " + "成员" + name + "\n"
         }
     }
 }
