@@ -30,7 +30,7 @@ function outport() {
                 let l = members.in.length
                 if (l) {
                     for (i = 0; i < l; i++) {
-                        text += teamname(members.in[i].name, t)
+                        text += teamname(members.in[i].name, t + 1)
                         let mc = members.in[i].children
                         if (mc) {
                             for (let i = 0, l = mc.length; i < l; i++)
