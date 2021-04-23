@@ -1,71 +1,3 @@
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-font,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  font-weight: inherit;
-  font-style: inherit;
-  font-size: 100%;
-  font-family: inherit;
-  vertical-align: baseline;
-}
 body {
   color: #2f332a;
   font: 15px/21px Arial, Helvetica, simsun, sans-serif;
@@ -137,13 +69,11 @@ ul.list {
 }
 
 div.content_wrap {
-  width: 1200px;
-  height: 380px;
   margin: 30px;
 }
 div.content_wrap div.left {
   float: left;
-  width: 250px;
+  width: 340px;
 }
 div.content_wrap div.right {
   float: right;

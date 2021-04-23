@@ -18,7 +18,7 @@
     <script type="text/javascript" src="./js/common.js"></script>
     <script type="text/javascript" src="./js/team.js"></script>
     <script type="text/javascript" src="./js/member.js"></script>
-    <!-- <script type="text/javascript" src="./js/settings.js"></script> -->
+    <script type="text/javascript" src="./js/settings.js"></script>
     <SCRIPT type="text/javascript">
     </SCRIPT>
 </HEAD>
@@ -26,19 +26,25 @@
 <BODY>
     <h1>作战安排</h1>
     <h6>可以通过勾选和拖拽选择成员</h6>
-    <div class="content_wrap">
-        <div class="zTreeDemoBackground left">
-            <h3>作战编组</h3>
-            <ul id="treeDemo" class="ztree"></ul>
+    <div class="">
+        <div class="content_wrap">
+            <div class="zTreeDemoBackground left">
+                <h3>作战编组</h3>
+                <ul id="treeDemo" class="ztree"></ul>
+            </div>
+            <div class="zTreeDemoBackground whole">
+                <h3>作战力量(可以拖拽到这里)</h3>
+                <ul id="treeDemo1" class="ztree"></ul>
+            </div>
+            <div class="zTreeDemoBackground right">
+                <h3>作战力量</h3>
+                <ul id="treeDemo2" class="ztree"></ul>
+            </div>
         </div>
-        <div class="zTreeDemoBackground whole">
-            <h3>作战力量(可以拖拽到这里)</h3>
-            <ul id="treeDemo1" class="ztree"></ul>
-        </div>
-        <div class="zTreeDemoBackground right">
-            <h3>作战力量</h3>
-            <ul id="treeDemo2" class="ztree"></ul>
-        </div>
+    </div>
+    <div class="menu">
+        <button onclick="outport()">导出所有数据</button>
+        <button onclick="wx.clearStorage()">清除所有数据</button>
     </div>
     <div id="rMenu">
         <ul>
@@ -49,7 +55,6 @@
             <li id="m_reset" onclick="resetTree();">撤销</li>
         </ul>
     </div>
-    <button onclick="wx.clearStorage()">清除所有数据</button>
     <style type="text/css">
         div#rMenu {
             position: absolute;
