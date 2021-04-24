@@ -1,4 +1,7 @@
 var setting = {
+    view: {
+        fontCss: getFont
+    },
     edit: {
         enable: true,
     },
@@ -25,7 +28,6 @@ var setting = {
         beforeMouseUp: savemember,
         beforeRemove: savemember,
         beforeRename: savemember,
-        beforeRightClick: savemember,
         onAsyncError: savemember,
         onAsyncSuccess: savemember,
         onCheck: savemember,
@@ -42,9 +44,12 @@ var setting = {
 };
 
 
-function saveteam(event, treeId, treeNode) {
-    app.set("armyteam", zTree.getNodes())
+function getFont(treeId, node) {
+    return node.font ? node.font : {};
 }
+// function saveteam(event, treeId, treeNode) {
+//     app.set("armyteam", zTree.getNodes())
+// }
 
 function savemember(event, treeId, treeNode) {
     app.set(app.get("current"), { out: otree.getNodes(), in: itree.getNodes() })

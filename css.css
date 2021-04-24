@@ -2,7 +2,7 @@ body {
     color: #2f332a;
     font: 15px/21px Arial, Helvetica, simsun, sans-serif;
     background: #f0f6e4 \9;
-    background-image: url(medal.jpg);
+    background-image: url(img/medal.jpg);
     background-size: 100% 100%;
     background-attachment: fixed;
 }

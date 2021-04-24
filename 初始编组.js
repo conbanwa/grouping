@@ -3,7 +3,7 @@ armyteaminit = [{
     pId: 0,
     name: "抵近侦察组",
     open: true,
-    icon: "team.jpg"
+    icon: "img/army.jpg"
 }, {
     id: 11,
     pId: 1,
@@ -21,7 +21,7 @@ armyteaminit = [{
     pId: 0,
     name: "侦察大队 2",
     open: true,
-    icon: "team.jpg"
+    icon: "img/army.jpg"
 }, {
     id: 21,
     pId: 2,
@@ -39,7 +39,7 @@ armyteaminit = [{
     pId: 0,
     name: "空中侦察队",
     open: true,
-    icon: "team.jpg"
+    icon: "img/army.jpg"
 }, {
     id: 31,
     pId: 3,

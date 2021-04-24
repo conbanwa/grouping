@@ -15,31 +15,31 @@
 //         onClick: onClick,
 //         onRightClick: OnRightClick,
 //         beforeDrag: beforeDrag,
-//         onDrag: saveteam,
-//         onDrop: saveteam,
-//         beforeAsync: saveteam,
-//         beforeCheck: saveteam,
-//         beforeClick: saveteam,
-//         beforeCollapse: saveteam,
-//         beforeDblClick: saveteam,
-//         beforeEditName: saveteam,
-//         beforeExpand: saveteam,
-//         beforeRemove: saveteam,
-//         beforeRename: saveteam,
-//         onAsyncError: saveteam,
-//         onAsyncSuccess: saveteam,
-//         onCheck: saveteam,
-//         onCollapse: saveteam,
-//         onDblClick: saveteam,
-//         onDragMove: saveteam,
+//         onDrag: savemember,
+//         onDrop: savemember,
+//         beforeAsync: savemember,
+//         beforeCheck: savemember,
+//         beforeClick: savemember,
+//         beforeCollapse: savemember,
+//         beforeDblClick: savemember,
+//         beforeEditName: savemember,
+//         beforeExpand: savemember,
+//         beforeRemove: savemember,
+//         beforeRename: savemember,
+//         onAsyncError: savemember,
+//         onAsyncSuccess: savemember,
+//         onCheck: savemember,
+//         onCollapse: savemember,
+//         onDblClick: savemember,
+//         onDragMove: savemember,
 //         onExpand: savemember,
-//         onRemove: saveteam,
-//         onRename: saveteam,
+//         onRemove: savemember,
+//         onRename: savemember,
 //     }
 // };
 
 function beforeDrag(treeId, treeNodes) {
-    saveteam()
+    savemember()
     return false;
 }
 
@@ -47,14 +47,15 @@ function onClick(event, treeId, treeNode, clickFlag) {
     z(treeNode.tId + " [ " + " onClick ]&nbsp;&nbsp;clickFlag = " + clickFlag + " (" + (clickFlag === 1 ? "普通选中" : (clickFlag === 0 ? "<b>取消选中</b>" : "<b>追加选中</b>")) + ")");
     // rend(treeNode.tId)
 }
+var thistree = $.fn.zTree.getZTreeObj("treeDemo1");
 
 function OnRightClick(event, treeId, treeNode) {
-    let zTree = $.fn.zTree.getZTreeObj(treeId);
+    thistree = $.fn.zTree.getZTreeObj(treeId);
     if (!treeNode && event.target.tagName.toLowerCase() != "button" && $(event.target).parents("a").length == 0) {
-        zTree.cancelSelectedNode();
+        thistree.cancelSelectedNode();
         showRMenu("root", event.clientX, event.clientY);
     } else if (treeNode && !treeNode.noR) {
-        zTree.selectNode(treeNode);
+        thistree.selectNode(treeNode);
         showRMenu("node", event.clientX, event.clientY);
     }
 }
@@ -103,45 +104,45 @@ function addTreeNode(node = {
 }) {
     hideRMenu();
     var newNode = node;
-    if (zTree.getSelectedNodes()[0]) {
-        newNode.checked = zTree.getSelectedNodes()[0].checked;
-        zTree.addNodes(zTree.getSelectedNodes()[0], newNode);
+    if (thistree.getSelectedNodes()[0]) {
+        newNode.checked = thistree.getSelectedNodes()[0].checked;
+        thistree.addNodes(thistree.getSelectedNodes()[0], newNode);
     } else {
-        zTree.addNodes(null, newNode);
+        thistree.addNodes(null, newNode);
     }
-    saveteam()
+    savemember()
 }
 
 function removeTreeNode() {
     hideRMenu();
-    var nodes = zTree.getSelectedNodes();
+    var nodes = thistree.getSelectedNodes();
     if (nodes && nodes.length > 0) {
         if (nodes[0].children && nodes[0].children.length > 0) {
             var msg = "要删除的节点是父节点，如果删除将连同子节点一起删掉。\n\n请确认！";
             if (confirm(msg) == true) {
-                zTree.removeNode(nodes[0]);
+                thistree.removeNode(nodes[0]);
             }
         } else {
-            zTree.removeNode(nodes[0]);
+            thistree.removeNode(nodes[0]);
         }
     }
-    saveteam()
+    savemember()
 }
 
 function checkTreeNode(checked) {
-    var nodes = zTree.getSelectedNodes();
+    var nodes = thistree.getSelectedNodes();
     if (nodes && nodes.length > 0) {
-        zTree.checkNode(nodes[0], checked, true);
+        thistree.checkNode(nodes[0], checked, true);
     }
     hideRMenu();
-    app.set("armyteam", zTree.getNodes())
+    app.set("armyteam", thistree.getNodes())
 }
 
 
 function initTree() {
     hideRMenu();
     $.fn.zTree.init($("#treeDemo"), setting, []);
-    zTree = $.fn.zTree.getZTreeObj("treeDemo");
+    thistree = $.fn.zTree.getZTreeObj("treeDemo");
     rMenu = $("#rMenu");
     app.set("armyteam", armyteaminit)
     addTreeNode(armyteaminit)
