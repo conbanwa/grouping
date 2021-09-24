@@ -2,7 +2,7 @@
 <HTML>
 
 <HEAD>
-    <TITLE> ZTREE DEMO - beforeDrag / onDrag / beforeDrop / onDrop</TITLE>
+    <TITLE> 情报侦察力量编组 </TITLE>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="./css.css" type="text/css">
     <link rel="stylesheet" href="./css/zTreeStyle/zTreeStyle.css" type="text/css">
@@ -12,13 +12,15 @@
     <h1>情报侦察力量编组</h1>
 
     <div class="menu">
-        <h6>可以通过勾选和拖拽选择成员 </h6>
-        <button onclick="outport()">导出所有数据</button>
-        <button onclick="wx.clearStorage()">清除所有数据</button>
+        <!-- <h6>可以通过勾选和拖拽选择成员 </h6> -->
+        <button onclick="outport(1)">导出word</button>
+        <button onclick="outport()">导出txt</button>
+        <button id="btnPrint">打印</button>
+        <button onclick="clearall()">初始化数据</button>
         <select id="selects" onchange="rend()">
-            <option value="1" selected="true">方案1</option>
-            <option value="2">方案2</option>
-            <option value="3">方案3</option>
+            <option value="plan1" selected>方案1</option>
+            <option value="plan2">方案2</option>
+            <option value="plan3">方案3</option>
         </select>
     </div>
     <div class="content_wrap">
@@ -26,24 +28,33 @@
             <h3>作战组</h3>
             <ul id="treeDemo" class="ztree"></ul>
         </div> -->
-        <div class="zTreeDemoBackground tree1">
-            <h3>作战编(可以拖拽到这里)</h3>
-            <ul id="treeDemo2" class="ztree"></ul>
+        <div class="zTreeDemoBackground demoleft">
+            <h3>作战编组</h3>
+            <ul id="demoleft" class="ztree"></ul>
         </div>
-        <div class="zTreeDemoBackground tree1">
-            <h3>作战力量（未选择）</h3>
-            <ul id="treeDemo1" class="ztree"></ul>
+        <div class="zTreeDemoBackground demoright">
+            <h3>作战力量</h3>
+            <ul id="demoright" class="ztree"></ul>
         </div>
     </div>
     <div id="rMenu">
         <ul>
-            <li id="m_add" onclick="addTreeNode();">增加节点</li>
+            <li id="m_at" onclick="addteam();">增加部队</li>
+            <li id="m_add" onclick="addTreeNode();">增加编组</li>
             <li id="m_del" onclick="removeTreeNode();">删除节点</li>
-            <!-- <li id="m_check" onclick="checkTreeNode(true);">Check节点</li>
-            <li id="m_unCheck" onclick="checkTreeNode(false);">unCheck节点</li> -->
-            <li id="m_reset" onclick="resetTree();">撤销</li>
+            <li onclick="expandNode('expandSon');">展开全部<span class="m_child">子节点</span> </li>
+            <li onclick="expandNode('collapseSon');">折叠全部<span class="m_child">子节点</span> </li>
+            <!-- <li onclick="expandNode('expandAll');">展开全部</li>
+            <li onclick="expandNode('collapseAll');">折叠全部</li> -->
+            <!-- <li id="m_reset" onclick="resetTree();">撤销</li> -->
+            <li id="m_restore" onclick="restore('platoon');">撤销移动</li>
+            <li id="m_origion" onclick="restore('origion');">还原</li>
         </ul>
     </div>
+    <!-- <div>
+        <h6> 初始数据可直接在文件《初始编组.js》中修改</h6>
+    </div> -->
+    <div id="wordexport"></div>
     <style type="text/css">
         div#rMenu {
             position: absolute;
@@ -63,17 +74,17 @@
         }
     </style>
     <script type="text/javascript" src="./js/jquery-1.4.4.min.js"></script>
-    <script type="text/javascript" src="./js/jquery.ztree.core.js"></script>
-    <script type="text/javascript" src="./js/jquery.ztree.excheck.js"></script>
-    <script type="text/javascript" src="./js/jquery.ztree.exedit.js"></script>
+    <script type="text/javascript" src="./js/jquery.ztree.all.min.js"></script>
     <script type="text/javascript" src="./js/storage.js"></script>
     <script type="text/javascript" src="./js/jgs.js"></script>
     <script type="text/javascript" src="初始编组.js"></script>
     <script type="text/javascript" src="初始成员.js"></script>
-    <script type="text/javascript" src="./js/common.js"></script>
     <script type="text/javascript" src="./js/team.js"></script>
-    <script type="text/javascript" src="./js/member.js"></script>
-    <script type="text/javascript" src="./js/settings.js"></script>
+    <script type="text/javascript" src="./js/common.js"></script>
+    <script type="text/javascript" src="./js/FileSaver.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.wordexport.js"></script>
+    <script type="text/javascript" src="./js/jquery.PrintArea.js"></script>
+    <script type="text/javascript" src="./js/print.js"></script>
 </BODY>
 
 </HTML>
